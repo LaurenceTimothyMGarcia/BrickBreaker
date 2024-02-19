@@ -10,7 +10,6 @@ public class BallMovement : MonoBehaviour
     public float startAngle = 90f;
 
     private Rigidbody rb;
-    private float currAngle;
     private Vector3 lastVel;
 
     // Start is called before the first frame update
@@ -23,7 +22,7 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        currAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+        lastVel = rb.velocity;
     }
 
     void Movement()
@@ -40,8 +39,6 @@ public class BallMovement : MonoBehaviour
 
         // Apply the velocity to the Rigidbody
         rb.velocity = new Vector3(xVelocity, yVelocity, 0f);
-
-        lastVel = rb.velocity;
     }
 
     void OnCollisionEnter(Collision col)
