@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BrickSpawner : MonoBehaviour
 {
+    // 
+    // Grid parameters
+    // 
+
+    [SerializeField] private GameObject brick;
+    [SerializeField] private GameObject inVBrick;
+
     // Start is called before the first frame update
     void Start()
     {
