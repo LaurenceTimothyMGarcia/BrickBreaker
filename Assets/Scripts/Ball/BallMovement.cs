@@ -28,7 +28,7 @@ public class BallMovement : MonoBehaviour
     void Movement()
     {
         // Generate a random angle for the ball's initial movement
-        // float randomAngle = Random.Range(30f, 150f); // Example range, adjust as needed
+        float randomAngle = Random.Range(30f, 150f); // Example range, adjust as needed
 
         // Convert the angle to radians
         float radians = startAngle * Mathf.Deg2Rad;
@@ -39,5 +39,18 @@ public class BallMovement : MonoBehaviour
 
         // Apply the velocity to the Rigidbody
         rb.velocity = new Vector3(xVelocity, yVelocity, 0f);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Brick"))
+        {
+            Debug.Log("Collision with: " + collision.gameObject.name);
+            Debug.Log("Collision normal: " + collision.contacts[0].normal);
+
+            // Calculate reflection angle
+            Vector3 reflection = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
+            rb.velocity = reflection;
+        }
     }
 }
