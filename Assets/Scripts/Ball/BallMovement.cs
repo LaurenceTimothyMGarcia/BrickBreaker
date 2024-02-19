@@ -11,6 +11,7 @@ public class BallMovement : MonoBehaviour
 
     private Rigidbody rb;
     private float currAngle;
+    private Vector3 lastVel;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class BallMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         currAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
     }
@@ -31,7 +32,7 @@ public class BallMovement : MonoBehaviour
         float randomAngle = Random.Range(30f, 150f); // Example range, adjust as needed
 
         // Convert the angle to radians
-        float radians = startAngle * Mathf.Deg2Rad;
+        float radians = randomAngle * Mathf.Deg2Rad;
 
         // Calculate the x and y components of the velocity based on the angle
         float xVelocity = Mathf.Cos(radians) * speed;
@@ -39,18 +40,23 @@ public class BallMovement : MonoBehaviour
 
         // Apply the velocity to the Rigidbody
         rb.velocity = new Vector3(xVelocity, yVelocity, 0f);
+
+        lastVel = rb.velocity;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision col)
     {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Brick"))
+        if (col.gameObject.CompareTag("Platform") || col.gameObject.CompareTag("Brick"))
         {
-            Debug.Log("Collision with: " + collision.gameObject.name);
-            Debug.Log("Collision normal: " + collision.contacts[0].normal);
+            Debug.Log("Collision with: " + col.gameObject.name);
+            Debug.Log("Collision normal: " + col.contacts[0].normal);
 
             // Calculate reflection angle
-            Vector3 reflection = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
-            rb.velocity = reflection;
+            Debug.Log(lastVel);
+            Vector3 reflection = Vector3.Reflect(lastVel, col.contacts[0].normal);
+            Debug.Log(reflection);
+            Debug.Log(reflection.normalized);
+            rb.velocity = reflection.normalized * speed;
         }
     }
 }
