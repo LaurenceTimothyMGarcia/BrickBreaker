@@ -9,6 +9,8 @@ public class BallMovement : MonoBehaviour
     public float speed = 5f;
     public float startAngle = 90f;
 
+    public PlayerScore pScore;
+
     private Rigidbody rb;
     private Vector3 lastVel;
 
@@ -43,17 +45,16 @@ public class BallMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Platform") || col.gameObject.CompareTag("Brick"))
+        if (col.gameObject.CompareTag("Platform") || col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Brick"))
         {
-            Debug.Log("Collision with: " + col.gameObject.name);
-            Debug.Log("Collision normal: " + col.contacts[0].normal);
-
-            // Calculate reflection angle
-            Debug.Log(lastVel);
             Vector3 reflection = Vector3.Reflect(lastVel, col.contacts[0].normal);
-            Debug.Log(reflection);
-            Debug.Log(reflection.normalized);
             rb.velocity = reflection.normalized * speed;
+
+            if (col.gameObject.CompareTag("Brick"))
+            {
+                pScore.AddScore();
+                Destroy(col.gameObject);
+            }
         }
     }
 }
