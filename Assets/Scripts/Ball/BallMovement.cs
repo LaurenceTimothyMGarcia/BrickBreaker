@@ -11,14 +11,31 @@ public class BallMovement : MonoBehaviour
 
     public PlayerScore pScore;
 
+    public Transform platform;
+
     private Rigidbody rb;
     private Vector3 lastVel;
+    private bool ballStarted;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Movement();
+        ballStarted = false;
+    }
+
+    void Update()
+    {
+        if (!ballStarted)
+        {
+            rb.MovePosition(new Vector3(platform.position.x, -18f, 0f));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !ballStarted)
+        {
+            ballStarted = true;
+            Movement();
+        }
     }
 
     // Update is called once per frame
@@ -33,7 +50,7 @@ public class BallMovement : MonoBehaviour
         float randomAngle = Random.Range(30f, 150f); // Example range, adjust as needed
 
         // Convert the angle to radians
-        float radians = randomAngle * Mathf.Deg2Rad;
+        float radians = startAngle * Mathf.Deg2Rad;
 
         // Calculate the x and y components of the velocity based on the angle
         float xVelocity = Mathf.Cos(radians) * speed;
@@ -48,7 +65,37 @@ public class BallMovement : MonoBehaviour
         if (col.gameObject.CompareTag("Platform") || col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Brick"))
         {
             Vector3 reflection = Vector3.Reflect(lastVel, col.contacts[0].normal);
-            rb.velocity = reflection.normalized * speed;
+            Vector3 nReflection = reflection.normalized;
+
+            Debug.Log(nReflection);
+
+            if (col.gameObject.CompareTag("Platform"))
+            {
+                if (Mathf.Abs(nReflection.x) == 1)
+                {
+                    nReflection.x = Random.Range(-5, 5f);
+                }
+
+                if (Mathf.Abs(nReflection.y) == 1)
+                {
+                    nReflection.y = Random.Range(0.5f, 0.9f);
+
+                    float rand = Random.Range(0.5f, 0.9f);
+
+                    if (rand > nReflection.y)
+                    {
+                        nReflection.x = 1 - nReflection.y;
+                    }
+                    else
+                    {
+                        nReflection.x = -1 * (1 - nReflection.y);
+                    }
+                }
+            }
+
+            Debug.Log(nReflection);
+
+            rb.velocity = nReflection * speed;
 
             if (col.gameObject.CompareTag("Brick"))
             {
