@@ -8,6 +8,7 @@ public class BallMovement : MonoBehaviour
     [Header("Ball Variables")]
     public float speed = 5f;
     public float startAngle = 90f;
+    public float maxMultiplier = 20f;
 
     public PlayerScore pScore;
 
@@ -106,6 +107,12 @@ public class BallMovement : MonoBehaviour
             {
                 pScore.AddScore();
                 brickCount += 1;
+
+                if (brickCount > maxMultiplier)
+                {
+                    brickCount = maxMultiplier;
+                }
+
                 Destroy(col.gameObject);
             }
         }

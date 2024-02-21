@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: TestLevel
   m_EditorClassIdentifier: 
   levelData:
-  - 'BB  BB  '
-  - BBB
-  - 'B    B '
+  - 'B  '
