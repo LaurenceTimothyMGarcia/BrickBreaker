@@ -74,6 +74,7 @@ public class BallMovement : MonoBehaviour
                 if (Mathf.Abs(nReflection.x) == 1)
                 {
                     nReflection.x = Random.Range(-5, 5f);
+                    nReflection.y = Random.Range(-5, 5f);
                 }
 
                 if (Mathf.Abs(nReflection.y) == 1)
@@ -102,6 +103,15 @@ public class BallMovement : MonoBehaviour
                 pScore.AddScore();
                 Destroy(col.gameObject);
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Loss"))
+        {
+            Debug.Log("Game Over");
+            pScore.gameOver = true;
         }
     }
 }

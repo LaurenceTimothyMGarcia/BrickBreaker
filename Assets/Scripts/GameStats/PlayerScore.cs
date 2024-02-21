@@ -10,6 +10,8 @@ public class PlayerScore : ScriptableObject
 
     public int highestScore = 0;
 
+    public bool gameOver = false;
+
     public void AddScore()
     {
         currentScore += blockWorth;

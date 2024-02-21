@@ -8,6 +8,7 @@ TagManager:
   - Brick
   - Platform
   - Wall
+  - Loss
   layers:
   - Default
   - TransparentFX
