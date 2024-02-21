@@ -14,15 +14,30 @@ public class TitleUI : MonoBehaviour
 
     [Header("Scoreboard UI")]
     [SerializeField] private GameObject scoreboard;
+    [SerializeField] private TMP_Text sbText;
 
     void Start()
     {
-        mainUI.SetActive(true);
-        // scoreboard.SetActive(false);
+        sbText.text = pScore.ScoreText();
+
+        MainTitleScreen();
+
     }
 
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void MainTitleScreen()
+    {
+        mainUI.SetActive(true);
+        scoreboard.SetActive(false);
+    }
+
+    public void ScoreboardScreen()
+    {
+        mainUI.SetActive(false);
+        scoreboard.SetActive(true);
     }
 }

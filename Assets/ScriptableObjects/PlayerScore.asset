@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScore: 0
   blockWorth: 10
-  highestScore: 0
+  highestScore: 0a000000090000000800000007000000060000000500000004000000030000000200000001000000
   gameOver: 0
