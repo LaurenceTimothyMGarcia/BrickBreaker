@@ -18,6 +18,7 @@ public class GameUI : MonoBehaviour
     void Start()
     {
         pScore.ClearScore();
+        pScore.gameOver = false;
         gameUI.SetActive(true);
         gameOver.SetActive(false);
     }
