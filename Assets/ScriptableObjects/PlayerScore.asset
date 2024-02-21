@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerScore
   m_EditorClassIdentifier: 
   currentScore: 0
-  blockWorth: 100
+  blockWorth: 10
   highestScore: 0
+  gameOver: 0

@@ -12,9 +12,9 @@ public class PlayerScore : ScriptableObject
 
     public bool gameOver = false;
 
-    public void AddScore()
+    public void AddScore(int scoreMult)
     {
-        currentScore += blockWorth;
+        currentScore += (blockWorth * scoreMult);
     }
 
     public void CheckHighestScore()

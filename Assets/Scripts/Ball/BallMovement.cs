@@ -72,15 +72,30 @@ public class BallMovement : MonoBehaviour
 
             Debug.Log(nReflection);
 
-            if (col.gameObject.CompareTag("Platform"))
+            if (col.gameObject.CompareTag("Wall"))
             {
                 brickCount = 1;
 
                 if (Mathf.Abs(nReflection.x) == 1)
                 {
-                    nReflection.x = Random.Range(-5, 5f);
-                    nReflection.y = Random.Range(-5, 5f);
+                    nReflection.x = Random.Range(0.5f, 0.9f);
+
+                    float rand = Random.Range(0.5f, 0.9f);
+
+                    if (rand > nReflection.x)
+                    {
+                        nReflection.y = 1 - nReflection.x;
+                    }
+                    else
+                    {
+                        nReflection.y = -1 * (1 - nReflection.x);
+                    }
                 }
+            }
+
+            if (col.gameObject.CompareTag("Platform"))
+            {
+                brickCount = 1;
 
                 if (Mathf.Abs(nReflection.y) == 1)
                 {
@@ -105,13 +120,14 @@ public class BallMovement : MonoBehaviour
 
             if (col.gameObject.CompareTag("Brick"))
             {
-                pScore.AddScore();
                 brickCount += 1;
 
                 if (brickCount > maxMultiplier)
                 {
                     brickCount = maxMultiplier;
                 }
+
+                pScore.AddScore((int)brickCount);
 
                 Destroy(col.gameObject);
             }
