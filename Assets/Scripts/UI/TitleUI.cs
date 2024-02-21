@@ -12,6 +12,9 @@ public class TitleUI : MonoBehaviour
     [Header("Main Game UI")]
     [SerializeField] private GameObject mainUI;
 
+    [Header("Level Select UI")]
+    [SerializeField] private GameObject lvlSelectUI;
+
     [Header("Scoreboard UI")]
     [SerializeField] private GameObject scoreboard;
     [SerializeField] private TMP_Text sbText;
@@ -32,12 +35,14 @@ public class TitleUI : MonoBehaviour
     public void MainTitleScreen()
     {
         mainUI.SetActive(true);
+        lvlSelectUI.SetActive(false);
         scoreboard.SetActive(false);
     }
 
     public void ScoreboardScreen()
     {
         mainUI.SetActive(false);
+        lvlSelectUI.SetActive(false);
         scoreboard.SetActive(true);
     }
 }
