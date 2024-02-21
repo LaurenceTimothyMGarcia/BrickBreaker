@@ -17,6 +17,8 @@ public class BallMovement : MonoBehaviour
     private Vector3 lastVel;
     private bool ballStarted;
 
+    private float brickCount = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +73,8 @@ public class BallMovement : MonoBehaviour
 
             if (col.gameObject.CompareTag("Platform"))
             {
+                brickCount = 1;
+
                 if (Mathf.Abs(nReflection.x) == 1)
                 {
                     nReflection.x = Random.Range(-5, 5f);
@@ -96,11 +100,12 @@ public class BallMovement : MonoBehaviour
 
             Debug.Log(nReflection);
 
-            rb.velocity = nReflection * speed;
+            rb.velocity = nReflection * (speed + brickCount);
 
             if (col.gameObject.CompareTag("Brick"))
             {
                 pScore.AddScore();
+                brickCount += 1;
                 Destroy(col.gameObject);
             }
         }

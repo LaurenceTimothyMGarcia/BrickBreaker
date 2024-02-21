@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameUI : MonoBehaviour
@@ -44,5 +45,15 @@ public class GameUI : MonoBehaviour
         gameUI.SetActive(false);
         gameOver.SetActive(true);
         pScore.CheckHighestScore();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void TitleMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }
