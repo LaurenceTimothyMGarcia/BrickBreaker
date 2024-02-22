@@ -88,7 +88,7 @@ public class BallMovement : MonoBehaviour
             {
                 // brickCount = 1;
 
-                if (Mathf.Abs(nReflection.x) == 1)
+                if (Mathf.Abs(nReflection.x) == 1 || Mathf.Abs(nReflection.y) < 0.1)
                 {
                     nReflection.x = Random.Range(0.5f, 0.9f);
 
