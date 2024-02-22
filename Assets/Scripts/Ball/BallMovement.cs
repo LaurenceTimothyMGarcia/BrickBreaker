@@ -127,6 +127,8 @@ public class BallMovement : MonoBehaviour
                     brickCount = maxMultiplier;
                 }
 
+                // CamShake.Shake(0.01f, 0.05f * brickCount);
+
                 pScore.AddScore((int)brickCount);
 
                 Destroy(col.gameObject);
