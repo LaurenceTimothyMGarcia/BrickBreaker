@@ -20,10 +20,13 @@ public class BallMovement : MonoBehaviour
 
     private float brickCount = 1;
 
+    [SerializeField] private FreezeFrame freeze;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        freeze = GetComponent<FreezeFrame>();
         ballStarted = false;
     }
 
@@ -126,6 +129,7 @@ public class BallMovement : MonoBehaviour
                 {
                     brickCount = maxMultiplier;
                 }
+                freeze.Freeze();
 
                 CamShake.Shake(brickCount);
 
