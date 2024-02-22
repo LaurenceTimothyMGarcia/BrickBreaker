@@ -13,6 +13,9 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject gameUI;
     [SerializeField] private TMP_Text scoreText;
 
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject pauseUI;
+
     [Header("Game Over UI")]
     [SerializeField] private GameObject gameOver;
 
@@ -20,8 +23,8 @@ public class GameUI : MonoBehaviour
     {
         pScore.ClearScore();
         pScore.gameOver = false;
-        gameUI.SetActive(true);
-        gameOver.SetActive(false);
+        
+        LevelStart();
     }
 
     void Update()
@@ -40,9 +43,26 @@ public class GameUI : MonoBehaviour
         scoreText.text = pScore.currentScore.ToString();
     }
 
+    public void LevelStart()
+    {
+        Time.timeScale = 1f;
+        gameUI.SetActive(true);
+        pauseUI.SetActive(false);
+        gameOver.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        gameUI.SetActive(false);
+        pauseUI.SetActive(true);
+        gameOver.SetActive(false);
+    }
+
     public void GameOver()
     {
         gameUI.SetActive(false);
+        pauseUI.SetActive(false);
         gameOver.SetActive(true);
         pScore.CheckHighestScore();
     }
@@ -55,5 +75,10 @@ public class GameUI : MonoBehaviour
     public void TitleMenu()
     {
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
