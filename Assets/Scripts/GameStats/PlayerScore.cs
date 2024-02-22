@@ -12,9 +12,12 @@ public class PlayerScore : ScriptableObject
 
     public bool gameOver = false;
 
+    private int scoreMultipler;
+
     public void AddScore(int scoreMult)
     {
-        currentScore += (blockWorth * scoreMult);
+        scoreMultipler = scoreMult;
+        currentScore += (blockWorth * scoreMultipler);
     }
 
     public void CheckHighestScore()
@@ -37,6 +40,7 @@ public class PlayerScore : ScriptableObject
     public void ClearScore()
     {
         currentScore = 0;
+        scoreMultipler = 1;
     }
 
     public string ScoreText()
@@ -52,5 +56,10 @@ public class PlayerScore : ScriptableObject
         }
 
         return scoreboard;
+    }
+
+    public int GetScoreMultipler()
+    {
+        return scoreMultipler;
     }
 }

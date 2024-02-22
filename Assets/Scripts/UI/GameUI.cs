@@ -12,6 +12,7 @@ public class GameUI : MonoBehaviour
     [Header("Primary Game UI")]
     [SerializeField] private GameObject gameUI;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text multText;
 
     [Header("Pause Menu")]
     [SerializeField] private GameObject pauseUI;
@@ -41,6 +42,7 @@ public class GameUI : MonoBehaviour
     public void UpdateScore()
     {
         scoreText.text = pScore.currentScore.ToString();
+        multText.text = pScore.GetScoreMultipler().ToString() + "x";
     }
 
     public void LevelStart()
