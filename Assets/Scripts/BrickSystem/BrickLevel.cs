@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "BrickLevel")]
 public class BrickLevel : ScriptableObject
 {
+    public string levelName;
     public string[] levelData;
 
     // B - Brick 

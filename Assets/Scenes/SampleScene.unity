@@ -994,7 +994,7 @@ MonoBehaviour:
   brick: {fileID: 3612801938759382472, guid: 24f93713c34acb641a2477ac20864b15, type: 3}
   invBrick: {fileID: 9178998181557293424, guid: 33fd789dee60ef743ab3b749d147f2aa,
     type: 3}
-  brickLevel: {fileID: 11400000, guid: 08ac01847771272489ec59a2b516493a, type: 2}
+  lvlCollection: {fileID: 11400000, guid: dce5c3563c098264e9feaf85edafa5a7, type: 2}
   row: 70
   col: 40
 --- !u!1 &1221259956

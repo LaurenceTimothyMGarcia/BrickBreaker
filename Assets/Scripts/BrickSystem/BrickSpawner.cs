@@ -11,22 +11,31 @@ public class BrickSpawner : MonoBehaviour
     [Header("Grid Data")]
     [SerializeField] private GameObject brick;
     [SerializeField] private GameObject invBrick;
-    [SerializeField] private BrickLevel brickLevel;
+    [SerializeField] private BrickLevelCollection lvlCollection;
 
     [Header("Grid Size")]
     [SerializeField] private int row = 70;
     [SerializeField] private int col = 40;
 
+    private BrickLevel brickLevel;
+
     // Start is called before the first frame update
     void Start()
     {
+        SelectLevel();
         BuildLevel();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SelectLevel()
     {
-        
+        foreach( BrickLevel brickLvl in lvlCollection.LvlCollection )
+        {
+            if (lvlCollection.SelectedLvl == brickLvl.name)
+            {
+                brickLevel = brickLvl;
+                break;
+            }
+        }
     }
 
     void BuildLevel()

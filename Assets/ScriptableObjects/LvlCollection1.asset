@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7839a739328821f4483fe6bd36ee84b1, type: 3}
-  m_Name: TestLevel2
+  m_Script: {fileID: 11500000, guid: 62ce1c75391155b40b22d8f20f41f49e, type: 3}
+  m_Name: LvlCollection1
   m_EditorClassIdentifier: 
-  levelName: TestLevel2
-  levelData:
-  - 'B BB  '
-  - 'BB  B '
+  LvlCollection:
+  - {fileID: 11400000, guid: b86b2aa0ca9ade04d84e35205b08aad5, type: 2}
+  - {fileID: 11400000, guid: 08ac01847771272489ec59a2b516493a, type: 2}
+  SelectedLvl: TestLevel2

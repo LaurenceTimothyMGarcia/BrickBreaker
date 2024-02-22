@@ -39,6 +39,13 @@ public class TitleUI : MonoBehaviour
         scoreboard.SetActive(false);
     }
 
+    public void LvlSelectScreen()
+    {
+        mainUI.SetActive(false);
+        lvlSelectUI.SetActive(true);
+        scoreboard.SetActive(false);
+    }
+
     public void ScoreboardScreen()
     {
         mainUI.SetActive(false);
