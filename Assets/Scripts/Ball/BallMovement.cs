@@ -40,7 +40,7 @@ public class BallMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !ballStarted)
         {
             ballStarted = true;
-            Movement();
+            Movement(false);
         }
     }
 
@@ -48,15 +48,24 @@ public class BallMovement : MonoBehaviour
     void FixedUpdate()
     {
         lastVel = rb.velocity;
+
+        if (rb.velocity == Vector3.zero)
+        {
+            Movement(true);
+        }
     }
 
-    void Movement()
+    void Movement( bool random )
     {
-        // Generate a random angle for the ball's initial movement
-        float randomAngle = Random.Range(30f, 150f); // Example range, adjust as needed
+        float angle = startAngle;
+
+        if (random)
+        {
+            angle = Random.Range(30f, 150f);
+        }
 
         // Convert the angle to radians
-        float radians = startAngle * Mathf.Deg2Rad;
+        float radians = angle * Mathf.Deg2Rad;
 
         // Calculate the x and y components of the velocity based on the angle
         float xVelocity = Mathf.Cos(radians) * speed;
