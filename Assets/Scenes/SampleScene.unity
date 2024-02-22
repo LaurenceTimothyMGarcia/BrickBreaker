@@ -715,7 +715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f921d14e0f5a824b8bec4f2873e9a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPOS: {x: 0, y: 25, z: -10}
+  duration: 0.1
+  posStrength: 0.05
+  rotStrength: 0.05
 --- !u!1 &353572940
 GameObject:
   m_ObjectHideFlags: 0

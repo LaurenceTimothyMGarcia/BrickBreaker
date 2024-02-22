@@ -7,13 +7,18 @@ public class CamShake : MonoBehaviour
 {
     public static CamShake Instance;
 
+    [SerializeField] private float duration;
+    [SerializeField] private float posStrength;
+    [SerializeField] private float rotStrength;
+
     private void Awake() => Instance = this;
 
-    private void OnShake(float duration, float strength)
+    private void OnShake(float brickCount)
     {
-        transform.DOShakePosition(duration, strength);
-        transform.DOShakeRotation(duration, strength);
+        transform.DOComplete();
+        transform.DOShakePosition(duration, posStrength * brickCount);
+        transform.DOShakeRotation(duration, rotStrength * brickCount);
     }
 
-    public static void Shake(float duration, float strength) => Instance.OnShake(duration, strength);
+    public static void Shake(float brickCount) => Instance.OnShake(brickCount);
 }
