@@ -74,7 +74,7 @@ public class BallMovement : MonoBehaviour
 
             if (col.gameObject.CompareTag("Wall"))
             {
-                brickCount = 1;
+                // brickCount = 1;
 
                 if (Mathf.Abs(nReflection.x) == 1)
                 {

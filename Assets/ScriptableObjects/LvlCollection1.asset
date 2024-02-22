@@ -15,4 +15,5 @@ MonoBehaviour:
   LvlCollection:
   - {fileID: 11400000, guid: b86b2aa0ca9ade04d84e35205b08aad5, type: 2}
   - {fileID: 11400000, guid: 08ac01847771272489ec59a2b516493a, type: 2}
-  SelectedLvl: TestLevel2
+  - {fileID: 11400000, guid: 3c623d92fdf4ce3478138dfae68ae8d0, type: 2}
+  SelectedLvl: TestLevel
