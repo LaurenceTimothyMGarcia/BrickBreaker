@@ -32,6 +32,11 @@ public class TitleUI : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void MainTitleScreen()
     {
         mainUI.SetActive(true);
