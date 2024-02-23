@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8635755041322257877}
   - component: {fileID: 4157506693204771791}
   - component: {fileID: 7656478624265903558}
+  - component: {fileID: 4631653816189806604}
   - component: {fileID: 2258358574439558390}
   m_Layer: 6
   m_Name: Ball
@@ -119,9 +120,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db995d9f6f2c854f8a917d94fd06dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 25
   startAngle: 90
+  maxMultiplier: 20
   pScore: {fileID: 11400000, guid: 0a08c2b1aa31df740b0130b623066a44, type: 2}
+  platform: {fileID: 0}
+  freeze: {fileID: 4631653816189806604}
+--- !u!114 &4631653816189806604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614427920230295196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce06cc4b71804be4d819d86b1aa2760c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeDuration: 0.05
+  freezeAmount: 0
 --- !u!54 &2258358574439558390
 Rigidbody:
   m_ObjectHideFlags: 0
