@@ -14,6 +14,9 @@ public class BallMovement : MonoBehaviour
 
     public Transform platform;
 
+    [SerializeField] private Camera mainCam;
+    [SerializeField] private Camera spectatorCam;
+
     private Rigidbody rb;
     private Vector3 lastVel;
     private bool ballStarted;
@@ -28,6 +31,9 @@ public class BallMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         freeze = GetComponent<FreezeFrame>();
         ballStarted = false;
+
+        mainCam.enabled = true;
+        spectatorCam.enabled = false;
     }
 
     void Update()
@@ -156,5 +162,27 @@ public class BallMovement : MonoBehaviour
             Debug.Log("Game Over");
             pScore.gameOver = true;
         }
+
+        if (col.gameObject.CompareTag("Spectator"))
+        {
+            Debug.Log("Spectator");
+            spectatorCam.enabled = true;
+            mainCam.enabled = false;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("Spectator"))
+        {
+            Debug.Log("Main");
+            mainCam.enabled = true;
+            spectatorCam.enabled = false;
+        }
+    }
+
+    public Vector3 RBVelocity()
+    {
+        return rb.velocity;
     }
 }

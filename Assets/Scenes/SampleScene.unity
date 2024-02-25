@@ -1455,6 +1455,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791821866}
   m_CullTransparentMesh: 1
+--- !u!1 &803017664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803017666}
+  - component: {fileID: 803017665}
+  m_Layer: 0
+  m_Name: Spectator
+  m_TagString: Spectator
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &803017665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803017664}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 50, y: 50, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &803017666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803017664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,6 +3633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7656478624265903558, guid: 38ba6b596f2d15f44b97fc517f1d8f8a,
         type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 330585545}
+    - target: {fileID: 7656478624265903558, guid: 38ba6b596f2d15f44b97fc517f1d8f8a,
+        type: 3}
       propertyPath: platform
       value: 
       objectReference: {fileID: 257818557}
@@ -3674,6 +3732,7 @@ SceneRoots:
   - {fileID: 2030412324}
   - {fileID: 353572944}
   - {fileID: 1505819761}
+  - {fileID: 803017666}
   - {fileID: 1165121948}
   - {fileID: 2141322893}
   - {fileID: 937120656}

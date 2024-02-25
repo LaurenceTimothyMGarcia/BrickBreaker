@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Wall
   - Loss
+  - Spectator
   layers:
   - Default
   - TransparentFX
