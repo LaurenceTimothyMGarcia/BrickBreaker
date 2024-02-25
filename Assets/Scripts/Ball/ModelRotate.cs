@@ -13,6 +13,6 @@ public class ModelRotate : MonoBehaviour
     {
         ballRotation = ballMovement.RBVelocity().normalized;
         float angle = Mathf.Atan2(ballRotation.x, ballRotation.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(0f, 0f, -angle);
     }
 }
